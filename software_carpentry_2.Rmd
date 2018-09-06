@@ -1,0 +1,8 @@
+---
+title: "software_carpentry_2"
+date: "September 6, 2018"
+output: html_document
+---
+
+Question: How do I save the data file they want me to save on my virtual machine instead of on my computer? Do I have to save it to my computer first then upload it through the 'files' tab on the right?
+
