@@ -1,0 +1,135 @@
+---
+title: "software_carpentry_4"
+date: "September 7, 2018"
+output: html_document
+---
+
+Read in file
+```{r}
+data <- read.csv(file= "data/feline-data.csv")
+data
+```
+
+```{r}
+cats$weight
+cats$coat
+```
+
+```{r}
+cats$weight + 2
+paste("My cat is", cats$coat)
+```
+
+#What type of data is a certain row or column?
+```{r}
+typeof(cats$weight)
+typeof(3.14)
+typeof(1L)
+typeof(1)
+typeof(1+1i)
+typeof(TRUE)
+typeof('banana')
+```
+
+#Added details of another cat
+```{r}
+cats <- read.csv(file= "data/feline-data_v2.csv")
+cats
+typeof(cats$weight)
+class(cats)
+```
+
+#Reload file back to normal
+```{r}
+cats <- read.csv(file= "data/feline-data.csv")
+cats
+```
+
+
+#dealing with vectors
+```{r}
+my_vector <- vector(length=3)
+my_vector
+another_vector <- vector(mode= 'character', length=3)
+another_vector
+str(cats$weight)
+
+concat_vector <- c(2, 6, 3)
+concat_vector
+quiz_vector <- c(2, 6, '3')
+quiz_vector
+
+coercion_vector <- c('a', TRUE)
+coercion_vector
+
+another_coercion <- c(0, TRUE)
+another_coercion
+```
+
+#coercing data to be a certain type
+```{r}
+character_vector_example <- c('0', '1', '2')
+character_vector_example
+
+character_coercedto_numeric <- as.numeric(character_vector_example)
+character_coercedto_numeric
+
+numeric_coercedto_logical <- as.logical(character_coercedto_numeric)
+numeric_coercedto_logical
+
+cats$likes_string
+cats$likes_string <- as.logical(cats$likes_string)
+cats$likes_string
+```
+
+#concatinating vectors and number series
+```{r}
+ab_vector <- c('a','b')
+ab_vector
+
+concat_example <- c(ab_vector, 'SWC')
+concat_example
+
+mySeries <- 1:10
+mySeries
+
+seq(10)
+seq(1, 10, by=0.1)
+```
+
+#asking questions about vectors and giving names to elements
+```{r}
+sequence_example <- seq(10)
+head(sequence_example, n=2)
+tail(sequence_example, n=4)
+length(sequence_example)
+class(sequence_example)
+typeof(sequence_example)
+
+names_example <- 5:8
+names(names_example) <- c("a","b","c","d")
+names_example
+```
+
+#Challenge 1
+```{r}
+practice_vector <- 1:26
+multiplied_vector <- practice_vector *2
+names(multiplied_vector) <- LETTERS
+multiplied_vector
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
