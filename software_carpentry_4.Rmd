@@ -4,7 +4,7 @@ date: "September 7, 2018"
 output: html_document
 ---
 
-Read in file
+#Read in file
 ```{r}
 data <- read.csv(file= "data/feline-data.csv")
 data
@@ -166,13 +166,59 @@ cats$coat
 typeof(cats$coat)
 cats[,1]
 typeof(cats[,1])
+str(cats[,1])
+
+cats[1,]
+typeof(cats[1,])
+str(cats[1,])
+```
+
+#Challenge 3
+```{r}
+cats[1] #First column of the data frame (list)
+cats[[1]] #Contents of the first column (a vector of factors)
+cats$coat #Contents of the first column (a vector of factors)
+cats["coat"] #First column of the data frame (list)
+cats[1,1] #Value of row 1, column 1 (either factor or character)
+cats[,1] #First column of the data frame (vector of factors)
+cats[1,] #First row of the data frame (list)
 ```
 
 
+#Matrices
+```{r}
+matrix_1 <- matrix(0, ncol=6, nrow=3)
+matrix_1
+class(matrix_1)
+typeof(matrix_1)
+str(matrix_1)
+dim(matrix_1) #Dimensions
+nrow(matrix_1)
+ncol(matrix_1)
+```
 
+#Challenge 4
+```{r}
+length(matrix_1)
+```
 
+#Challenge 5
+```{r}
+matrix_2 <- matrix(1:50, ncol=5, nrow=10, byrow=TRUE)
+matrix_2
+```
 
+#Challenge 6
+```{r}
+data_types <- c("double","integer","complex","logical","character")
+data_structures <- c("data.frame","vector","factor","list","matrix")
+answer <- list("data_types","data_structures")
+answer
+```
 
-
+#Challenge 7
+```{r}
+matrix(c(4, 1, 9, 5, 10, 7), ncol=2, byrow=TRUE)
+```
 
 
