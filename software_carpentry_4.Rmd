@@ -120,10 +120,53 @@ multiplied_vector
 ```
 
 
+#Data Frames
+```{r}
+str(cats$weight)
+str(cats$likes_string)
+str(cats$coat)
+```
 
+#Factors
+```{r}
+coats <- c('tabby','tortoiseshell','black','tabby')
+coats
+str(coats)
+CATegories <- factor(coats)
+str(CATegories)
+typeof(coats)
+typeof(CATegories)
+```
 
+#Challenge 2: issue with not pressing enter after end of feline-data.csv in order for R to read the table as complete
+```{r}
+cats <- read.csv(file= "data/feline-data.csv", stringsAsFactors=FALSE)
+str(cats$coat)
 
+```
 
+#Ordering factors
+```{r}
+my_data <- c("case","control","control","case")
+ordered_factors <- factor(my_data, levels= c("control","case"))
+str(ordered_factors)
+```
+
+#Lists
+```{r}
+list_1 <- list(1, "a", TRUE, 1+4i)
+list_1
+
+list_2 <- list(title="Numbers", numbers=1:10, data=TRUE)
+list_2
+
+typeof(cats)
+
+cats$coat
+typeof(cats$coat)
+cats[,1]
+typeof(cats[,1])
+```
 
 
 
