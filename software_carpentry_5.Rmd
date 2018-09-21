@@ -54,13 +54,20 @@ cats = na.omit(cats)
 ```
 
 #Removing columns
-#Question: what just happened here???
 ```{r}
 cats[,-4]
+
+names(cats)
 
 drop = names(cats) %in% c("age")
 cats[,!drop]
 ```
+#Removing columns the other way (doesn't really matter)
+```{r}
+drop = names(cats) %in% c("age")
+cats[,!drop]
+```
+
 
 #Combining two data frames together
 ```{r}
@@ -73,8 +80,8 @@ cats
 
 
 #Challenge 2
-#Do I have to do first_name = c("Paige") just for one answer?
-#Does it make a difference if I add the column with c or list?
+#Do I have to do first_name = c("Paige") just for one answer? no
+#Does it make a difference if I add the column with c or list? no
 ```{r}
 my_info = data.frame(first_name = "Paige", last_name = "Bippus", lucky_number = 4, stringsAsFactors = FALSE)
 my_info
