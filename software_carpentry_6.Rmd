@@ -1,5 +1,6 @@
 ---
 title: "software_carpentry_6"
+date: September 24, 2018
 output: html_document
 ---
 
