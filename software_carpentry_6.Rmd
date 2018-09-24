@@ -163,8 +163,32 @@ attributes(mod)
 mod$df.residual
 ```
 
+#Data frames
+```{r}
+head(gapminder[3])
+head(gapminder$lifeExp)
 
+gapminder[1:3,]
+gapminder[3,]
+head(gapminder[,3,drop=FALSE])
+```
 
+#Challenge 7
+```{r}
+gapminder[gapminder$year == 1957,] #1
+gapminder[,-(1:4)] #2
+gapminder[gapminder$lifeExp > 80,] #3
+gapminder[1,c(4,5)] #4
+gapminder[gapminder$year %in% c(2002,2007),]
+```
+
+#Challenge 8
+```{r}
+gapminder[1:20,]
+
+gapminder_small = gapminder[c(1:9, 19:23),]
+gapminder_small
+```
 
 
 
