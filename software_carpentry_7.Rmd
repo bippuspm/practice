@@ -33,7 +33,10 @@ if(any(gapminder$year==2002)) {print("Records found")}
 
 
 #Repeating operations
+#I honestly don't understand this entire thing
 ```{r}
+for(i in 1:10) {print(i)}
+for(i in 1:5) {for(j in c('a','b','c','d','e')) {print(paste(i,j))}}
 
 ```
 
