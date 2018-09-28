@@ -1,9 +1,16 @@
 ---
 title: "software_carpentry_8"
-date: September 24, 2018
+date: September 28, 2018
 output: html_document
 ---
 
+#Example
+```{r}
+library("ggplot2") #Calling the ggplot function
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+
+```
 
 
 
