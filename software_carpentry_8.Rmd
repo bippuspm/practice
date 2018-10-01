@@ -88,8 +88,51 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
 
 #Multi-panel figures
 ```{r}
-
+starts.with <- substr(gapminder$country, start = 1, stop = 1)
+az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country)
 ```
+
+
+#Modifying text
+```{r}
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+```
+
+
+#Exporting plot
+```{r}
+lifeExp_plot = ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+
+ggsave(filename = "results/lifeExp.png", plot = lifeExp_plot, width = 12, height = 10, dpi = 300, units = "cm")
+```
+
+
+#Challenge 5
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, fill = continent)) + geom_density(alpha = 0.5) + scale_x_log10() + facet_wrap( ~ year)
+```
+
+
+
+
 
 
 
