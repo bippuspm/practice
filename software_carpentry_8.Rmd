@@ -4,22 +4,72 @@ date: September 28, 2018
 output: html_document
 ---
 
-#Example
+#Read in gapminder data
+```{r}
+gapminder = read.csv(file="data/gapminder-FiveYearData.csv")
+
+```
+
+
+#Example: scatter plot
 ```{r}
 library("ggplot2") #Calling the ggplot function
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 
+#aes: aesthetics
+#geom_point: scatter plot
+```
+
+
+#Challenge 1
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
+```
+
+
+#Challenge 2
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, color = continent)) + geom_point()
+```
+
+
+#Example: line plot
+```{r}
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by= country, color=continent)) +
+  geom_line()
+
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by= country, color=continent)) +
+  geom_line() + geom_point()
+
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+  geom_line(aes(color=continent)) + geom_point()
+```
+
+#Challenge 3
+```{r}
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) + geom_point() +
+  geom_line(aes(color=continent))
+  
+```
+
+
+#Transformation and statistics
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
+  geom_point()
+
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(alpha = 0.5) + scale_x_log10()
 ```
 
 
 
-
-
-
-
-
-
+#Fitting data
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1)
+```
 
 
 
