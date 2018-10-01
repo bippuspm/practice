@@ -72,6 +72,26 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ```
 
 
+#Challenge 4a
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(method = "lm", color = "blue", size = 3) + scale_x_log10() + geom_smooth(method="lm", size=1)
+```
+
+
+#Challenge 4b
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point(shape = 17) + scale_x_log10() + geom_smooth(method="lm", size=1)
+```
+
+
+#Multi-panel figures
+```{r}
+
+```
+
+
 
 
 
