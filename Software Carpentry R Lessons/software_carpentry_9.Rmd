@@ -1,0 +1,72 @@
+---
+title: "software_carpentry_9"
+date: October 1, 2018
+output: html_document
+---
+
+
+#Read in gapminder data
+```{r}
+gapminder = read.csv(file="data/gapminder-FiveYearData.csv")
+```
+
+
+#Challenge 1
+#so the $ can create a new column too? I thought you could only do that with cbind?
+```{r}
+pop = gapminder$pop
+milPop = pop/100000
+gapminder_2 = cbind(gapminder, milPop)
+head(gapminder_2)
+tail(gapminder_2)
+```
+
+
+#Challenge 2
+```{r}
+library("ggplot2")
+ggplot(data = gapminder_2, aes(x = year, y = milPop)) + geom_point()
+
+countries = gapminder_2[gapminder_2$country %in% c("China","Indonesia","India"), ]
+ggplot(data = countries, aes (x = year, y = milPop)) + geom_point()
+```
+
+
+Very important: the operator * gives you element-wise multiplication! To do matrix multiplication, we need to use the %*% operator:
+
+
+#Challenge 3
+```{r}
+m <- matrix(1:12, nrow=3, ncol=4)
+m
+
+m ^ -1 
+m * c(1, 0, -1)
+m > c(0, 20)
+m * c(1, 0, -1, 2)
+```
+
+
+#Challenge 4
+```{r}
+sum(1/(1:100)^2)
+sum(1/(1:1e04)^2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

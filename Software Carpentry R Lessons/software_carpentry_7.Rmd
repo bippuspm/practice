@@ -1,0 +1,50 @@
+---
+title: "software_carpentry_7"
+date: September 24, 2018
+output: html_document
+---
+
+#Conditional statements
+# if
+if (condition is true) {perform action}
+
+# if ... else
+if (condition is true) {perform action} else {perform alternative action} #that is, if the condition is false
+```{r}
+x=8
+if (x > 10) {print("x is greater than 10")} else {print("x is less than 10")}
+
+if (x>10) {print("x is greater than 10")} else if (x>5) {print("x is less than 10 and greater than 5")} else {print("x is less than 5")}
+
+y= 4==3
+y
+if (y) {"4 equals 3"} else {"4 does not equal 3"}
+```
+
+#Challenge 1
+```{r}
+gapminder[(gapminder$year == 2002),]
+rows_2002 = nrow(gapminder[(gapminder$year==2002),])
+if (rows_2002 >=1) {"Records found"} else {"Records not found"}
+
+#easier:
+if(any(gapminder$year==2002)) {print("Records found")}
+```
+
+
+#Repeating operations
+#I honestly don't understand this entire thing
+```{r}
+for(i in 1:10) {print(i)}
+for(i in 1:5) {for(j in c('a','b','c','d','e')) {print(paste(i,j))}}
+
+```
+
+
+
+
+
+
+
+
+
