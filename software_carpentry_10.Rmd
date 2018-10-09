@@ -99,10 +99,21 @@ calcGDP(gapminder, country = "Australia", year = 2007)
 
 #Challenge 4
 ```{r}
-
+calcGDP(gapminder, country = "New Zealand", year= c(1952, 1987))
 ```
 
 
+#Challenge 5
+```{r}
+fence <- function(text, wrapper){
+  text <- c(wrapper, text, wrapper)
+  result <- paste(text, collapse = " ")
+  return(result)
+}
+
+best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+fence(text=best_practice, wrapper="***")
+```
 
 
 
