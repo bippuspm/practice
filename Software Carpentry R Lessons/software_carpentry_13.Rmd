@@ -5,7 +5,21 @@ output: html_document
 ---
 
 
+#Challenge 1
+```{r}
+library("tidyr")
+library("dplyr")
 
+str(gapminder)
+```
+
+#From wide to long format with gather()
+###HELP
+```{r}
+download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv", destfile = "data/gapminder_wide.csv")
+
+gap_wide = read.csv("data/gapminder_wide.csv", stringAsFactors = FALSE)
+```
 
 
 
