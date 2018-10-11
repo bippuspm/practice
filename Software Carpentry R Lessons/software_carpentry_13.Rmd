@@ -4,6 +4,13 @@ date: October 9, 2018
 output: html_document
 ---
 
+#Read in gapminder data
+```{r}
+gapminder = read.csv("~/practice/data/gapminder-FiveYearData.csv")
+```
+
+
+
 
 #Challenge 1
 ```{r}
@@ -14,18 +21,53 @@ str(gapminder)
 ```
 
 #From wide to long format with gather()
-###HELP
 ```{r}
-download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv", destfile = "data/gapminder_wide.csv")
+download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv", destfile = "~/practice/data/gapminder_wide.csv")
 
-gap_wide = read.csv("data/gapminder_wide.csv", stringAsFactors = FALSE)
+gap_wide = read.csv(file = "~/practice/data/gapminder_wide.csv", stringsAsFactors = FALSE)
+
+gap_long <- gap_wide %>%
+    gather(obstype_year, obs_values, starts_with('pop'),
+           starts_with('lifeExp'), starts_with('gdpPercap')) #Gathering by name
+
+gap_long <- gap_wide %>% gather(obstype_year,obs_values,-continent,-country) #Gathering by everything but certain columns (country and continent)
+
+gap_long <- gap_long %>% separate(obstype_year,into=c('obs_type','year'),sep="_")
+gap_long$year <- as.integer(gap_long$year)
+
+gap_long
 ```
 
 
+#Challenge 2
+```{r}
+continent_means = gap_long %>% group_by(continent,obs_type) %>%
+   summarize(means=mean(obs_values))
+continent_means
+```
 
 
+#From long to intermediate with spread()
+```{r}
+gap_normal <- gap_long %>% spread(obs_type,obs_values)
+
+dim(gap_normal)
+dim(gapminder)
+names(gap_normal)
+names(gapminder)
+
+gap_normal <- gap_normal[,names(gapminder)]
+all.equal(gap_normal,gapminder)
+
+gap_normal <- gap_normal %>% arrange(country,continent,year)
+all.equal(gap_normal,gapminder)
+```
 
 
+#Convert long all the way back to wide
+```{r}
+
+```
 
 
 
