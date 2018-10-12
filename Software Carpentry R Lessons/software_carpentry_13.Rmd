@@ -66,12 +66,41 @@ all.equal(gap_normal,gapminder)
 
 #Convert long all the way back to wide
 ```{r}
+gap_temp <- gap_long %>% unite(var_ID,continent,country,sep="_")
+str(gap_temp)
 
+gap_temp <- gap_long %>%
+    unite(ID_var,continent,country,sep="_") %>%
+    unite(var_names,obs_type,year,sep="_")
+str(gap_temp)
+
+gap_wide_new <- gap_long %>%
+    unite(ID_var,continent,country,sep="_") %>%
+    unite(var_names,obs_type,year,sep="_") %>%
+    spread(var_names,obs_values)
+str(gap_wide_new)
 ```
 
 
+#Challenge 3
+```{r}
+gap_ludicrously_wide <- gap_long %>%
+   unite(var_names,obs_type,year,country,sep="_") %>%
+   spread(var_names,obs_values)
+```
 
 
+#Separating ID variable into 2 variables
+```{r}
+gap_wide_betterID <- separate(gap_wide_new,ID_var,c("continent","country"),sep="_")
+gap_wide_betterID <- gap_long %>%
+    unite(ID_var, continent,country,sep="_") %>%
+    unite(var_names, obs_type,year,sep="_") %>%
+    spread(var_names, obs_values) %>%
+    separate(ID_var, c("continent","country"),sep="_")
+str(gap_wide_betterID)
+all.equal(gap_wide, gap_wide_betterID)
+```
 
 
 
